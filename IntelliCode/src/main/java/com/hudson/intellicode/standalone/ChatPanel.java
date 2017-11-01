@@ -113,7 +113,7 @@ public class ChatPanel extends JPanel {
 		gbc.gridx = bUserInput ? 0 : 1;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.BOTH;
-		gbc.weightx = 0.05;
+		gbc.weightx = inputText.length() < 55 ? 0.05 : 2;
 		gbc.weighty = 1.0;
 		gbc.insets = new Insets(2, 4, 2, 4);
 		gbc.anchor = bUserInput ? GridBagConstraints.LINE_START : GridBagConstraints.LINE_END;
@@ -129,8 +129,8 @@ public class ChatPanel extends JPanel {
 		gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = currentMessageIndex;
-		gbc.ipady = 2;
-		gbc.ipady = 15 * (int)(Math.ceil(inputText.length() * 1.0/50));
+		gbc.ipadx = 2;
+		gbc.ipady = 15 * (int)(Math.ceil(inputText.length() * 1.0/55));
 		gbc.weightx = 1.0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		mainPanel.add(panel, gbc);
@@ -146,7 +146,7 @@ public class ChatPanel extends JPanel {
 	}
 
 	private JComponent createLabel(String inputText, boolean bUserInput) {
-		JLabel label = new JLabel("<html>" + inputText + "</html>");
+		JLabel label = new JLabel("<html><p>" + inputText + "</p></html>");
 		label.setHorizontalAlignment(bUserInput ? SwingConstants.LEFT : SwingConstants.RIGHT);
 		
 		label.setOpaque(true);
